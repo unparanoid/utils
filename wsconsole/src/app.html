@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=360,initial-scale=1">
+
+  <title>websocket console</title>
+  <meta name="author" content="falsycat">
+
+  <link rel="stylesheet" href="./destyle.css">
+  <script src="./msgpack.min.js"></script>
+  <script src="./main.js"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+
+  <style>
+:root {
+  font-size: 14px;
+  font-family: monospace;
+  height: 100%;
+
+  --c1: #343A40;
+  --c2: #7952B3;
+  --c3: #FFC107;
+  --c4: #E1E8EB;
+}
+body {
+  height: 100%;
+  background-color: var(--c1);
+  color: var(--c4);
+}
+
+#terminal .list .sysinfo {
+  color: gray;
+}
+#terminal .list .syswarn {
+  color: var(--c3);
+}
+
+input, select, button, textarea {
+  border: 1px solid var(--c4);
+  padding: .25rem;
+}
+input:focus, select:focus, button:focus, textarea:focus {
+  border-color: var(--c2);
+}
+input[disabled], button[disabled], textarea[disabled] {
+  background-color: #222;
+  cursor: not-allowed;
+}
+p {
+  padding: .25rem;
+}
+select {
+  position: relative;
+  appearance: auto;
+  background-color: var(--c1);
+}
+  </style>
+</head>
+
+<body>
+  <div style="padding: 1rem; height: 100%; display: flex; flex-direction: column">
+    <div id="conn" style="margin-bottom: 1rem; padding: 1rem; border: 1px solid var(--c4)">
+      <div style="margin: .5rem 0">
+        <input type="text" class="addr" style="width: 100%" placeholder="enter the address">
+      </div>
+      <div style="display: flex">
+        <p class="status" style="flex-grow: 1">websocket console XD</p>
+        <div>
+          <select class="mode">
+            <option value="plaintext">plaintext</option>
+            <option value="msgpack">msgpack</option>
+          </select>
+          <button class="submit">CONNECT</button></div>
+      </div>
+    </div>
+    <div id="terminal" style="padding: 1rem; border: 1px solid var(--c4); display: flex; flex-direction: column; flex-grow: 1">
+      <div style="padding: 0 0 1rem 0; flex-grow: 1; position: relative">
+        <ul class="list" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: scroll">
+        </ul>
+      </div>
+      <div style="margin: .5rem 0">
+        <textarea class="input" style="width: 100%; height: 4rem; resize: none"></textarea>
+      </div>
+      <div style="display: flex">
+        <p class="status" style="flex-grow: 1"></p>
+        <div><button class="submit">SEND</button></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
