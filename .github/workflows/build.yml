@@ -1,0 +1,27 @@
+name: build
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-on-ubuntu:
+    name: build (Ubuntu x86_64)
+    runs-on: ubuntu-latest
+    steps:
+      - name: install deps
+        run: |
+          pip install htmlark
+
+      - uses: actions/checkout@v2
+
+      - name: build
+        run: |
+          make -j VERBOSE=1
+
+      - name: upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: pkg
+          path: |
+            ${{ github.workspace }}/pkg
+          if-no-files-found: ignore
