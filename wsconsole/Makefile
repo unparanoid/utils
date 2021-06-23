@@ -1,7 +1,9 @@
 PKG:=upd.util.wsconsole
 FILES:=  \
-	upd.yml  \
-	app.html
+	app.html  \
+	legal/destyle.css.txt  \
+	legal/msgpack-lite.txt  \
+	upd.yml
 
 include ../Makefile.in
 
