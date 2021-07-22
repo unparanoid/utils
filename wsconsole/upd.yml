@@ -1,8 +1,14 @@
 file:
-  /lib/upd.util.wsconsole/app.html:
-    npath:  ./app.html
-    driver: upd.bin.r
-  /legal/upd.util.wsconsole/:
-    npath: ./legal
-    rules:
-      txt: upd.bin.r
+  '/lib/upd.util.wsconsole/app.html':
+    npath :  ./app.html
+    driver: upd.bin
+    param : |
+      mode: R
+  '/legal/upd.util.wsconsole/':
+    driver: upd.syncdir
+    npath :  ./legal
+    param : |
+      '.*\.txt':
+        - driver: upd.bin
+          param : |
+            mode: R
