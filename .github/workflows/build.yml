@@ -23,5 +23,5 @@ jobs:
         with:
           name: pkg
           path: |
-            ${{ github.workspace }}/pkg
+            ${{ github.workspace }}/**/dst
           if-no-files-found: ignore

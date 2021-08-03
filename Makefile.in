@@ -1,13 +1,11 @@
 ROOT:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-TAR=tar
-HTMLARK=htmlark
+HTMLARK:=htmlark
 
-TARGET_DIR:=$(ROOT)/pkg
-TARGET:=$(TARGET_DIR)/$(PKG).tar.gz
+DST_FILES:=$(addprefix dst/, $(FILES))
 
-all: $(TARGET)
+all: $(DST_FILES)
 
-$(TARGET): $(FILES)
-	mkdir -p $(@D)
-	$(TAR) -zcvf $@ $^
+dst/%:%
+	@mkdir -p $(@D)
+	cp $< $@

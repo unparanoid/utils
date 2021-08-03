@@ -13,5 +13,5 @@ deps:=  \
 	src/main.js  \
 	src/msgpack.min.js
 
-app.html: $(deps)
+dst/app.html: $(deps)
 	$(HTMLARK) -o $@ $<
